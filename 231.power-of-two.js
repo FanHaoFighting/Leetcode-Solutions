@@ -6,9 +6,7 @@ var isPowerOfTwo = function(n) {
     if (n < 1) {
       return false
     }
-    while(n % 2 == 0) {
-      n = n >> 1
-    }
-    return n == 1
+    // 2的n次方首位为1, 其余位数为0, 故用此做法
+    return (n & (n - 1)) == 0
 };
 
