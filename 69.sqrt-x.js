@@ -2,8 +2,26 @@
  * @param {number} x
  * @return {number}
  */
-var mySqrt = function (x) {
-  return newton(x)
+var mySqrt = function (n) {
+  if (n == 0) {
+    return 0
+  }
+  // 二分法
+  var low = 1
+  var high = n
+
+  while (high - low > 1) {
+    var mid = Math.floor((low + high) / 2)
+    var t = mid * mid
+    if (t > n) {
+      high = mid
+    } else if (t < n) {
+      low = mid
+    } else {
+      return mid
+    }
+  }
+  return low
 };
 
 // 牛顿迭代法
