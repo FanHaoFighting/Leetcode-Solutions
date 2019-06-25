@@ -3,34 +3,21 @@
  * @param {number} n
  * @return {boolean}
  */
-var isHappy = function(n) {
-    while (n % (10 * (getDigitWidth(n) -1)) != 0) {
-      n = digitsSquareSum(n)
-      if (n % (10 * (getDigitWidth(n) -1)) != 0) {
-        return true
-      }
-    }
-};
-
-var digitsSquareSum  = function(n) {
-  let digitWidth = getDigitWidth(n)
+var isHappy = function (n) {
   var sum = 0
-  let digit
-  for (let i = 0; i < digitWidth; i++) {
-    digit = n % 10
-    n = Math.floor(n / 10)
-    sum += digit * digit
+  while (n > 0) {
+    var d = n % 10
+    sum += d * d
+    n = (n - d) / 10
   }
-}
-
-//获取位数
-var getDigitWidth = function(n){
-  var width=0;
-  while(n>=1){
-      width = width + 1;
-      n = n / 10;
+  if (sum == 1) {
+    return true
+    // 数学上陷入4的循环就不是快乐数
+  } else if (sum == 4) {
+    return false
+  } else {
+    return isHappy(sum)
   }
-  return width;
-}
+};
 
 
