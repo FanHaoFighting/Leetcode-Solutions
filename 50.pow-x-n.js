@@ -3,19 +3,21 @@
  * @param {number} n
  * @return {number}
  */
-var myPow = function (x, n) {
-  if (n == 0) {
-    return 1
+var myPow = function(x, n) {
+  var digitWidth = Math.floor(Math.log2(n))
+  var t = 1
+  
+  while (digitWidth >= 0) {
+      var d = (n >> digitWidth) % 2
+      if (d == 1) {
+          t = t * t * x
+      } else {
+          t = t * t
+      }
+      digitWidth--
   }
-  if (n == -1) {
-    return 1 / x
-  }
-  if (n % 2 == 0) {
-    var t = myPow(x, n / 2)
-    return t * t
-  } else {
-    var t = myPow(x, (n - 1)/ 2)
-    return t * t * x
-  }
+  
+  return t
 };
+
 
