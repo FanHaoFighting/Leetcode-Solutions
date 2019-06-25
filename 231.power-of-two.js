@@ -7,7 +7,7 @@ var isPowerOfTwo = function(n) {
       return false
     }
     while(n % 2 == 0) {
-      n = n / 2
+      n = n >> 1
     }
     return n == 1
 };
