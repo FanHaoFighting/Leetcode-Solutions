@@ -8,11 +8,8 @@ var hammingDistance = function(x, y) {
     var z = x ^ y
     // 找出异或结果中1的个数
     while(z !== 0) {
-      var d = z % 2
-      if (d === 1) {
-        count++
-      }
-      z = (z - d) / 2
+      z = z & (z - 1)
+      count++
     }
     return count
 };
