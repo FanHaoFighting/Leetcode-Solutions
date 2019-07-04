@@ -1,20 +1,17 @@
-/*
- * @lc app=leetcode id=1 lang=javascript
- *
- * [1] Two Sum
- */
 /**
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
-    const map = new Map()
+var twoSum = function (nums, target) {
+    var map = {}
     for (let i = 0; i < nums.length; i++) {
-        if (map.has(target - nums[i])) {
-            return [map.get(target - nums[i]), i]
+        var need = target - nums[i]
+        if (need in map) {
+            return [map[need], i]
+        } else {
+            map[nums[i]] = i
         }
-        map.set(nums[i],i)
     }
 };
 

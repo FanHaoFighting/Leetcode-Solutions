@@ -16,10 +16,8 @@ var merge = function (nums1, m, nums2, n) {
       nums1[index--] = nums2[pointer2--]
     }
   }
-  if (pointer1 < 0) {
-    while (index >= 0) {
-      nums1[index--] = nums2[pointer2--]
-    }
+  while (pointer2 >= 0) {
+    nums1[index--] = nums2[pointer2--]
   }
 };
 
