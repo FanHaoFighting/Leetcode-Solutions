@@ -3,17 +3,13 @@
  * @return {ListNode}
  */
 var swapPairs = function(head) {
-  let fakeHead = new ListNode
-  fakeHead.next = head
-  let cur = fakeHead
-  while (cur.next != null && cur.next.next != null) {
-      let node1 = cur.next
-      let node2 = cur.next.next
-      node1.next = node2.next
-      node2.next = node1
-      cur.next = node2
-      cur = node1
+  if (!head || !head.next) {
+    return head
   }
-  return fakeHead.next
+  var node1 = head
+  var node2 = head.next
+  node1.next = swapPairs(node2.next)
+  node2.next = node1
+  return node2
 };
 

@@ -3,23 +3,17 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-  var resultObj = {}
-  var resultArr = []
+  var map = {}
 
-  function addElementToObj (element) {
-    var key = element.split("").sort().join("")
-    if (key in resultObj) {
-      resultObj[key].push(element)
+  for (var i = 0; i < strs.length; i++) {
+    var str = strs[i]
+    var key = str.split("").sort().join("")
+    if (key in map) {
+      map[key].push(str)
     } else {
-      resultObj[key] = [element]
+      map[key] = [str]
     }
   }
-
-  strs.forEach(addElementToObj)
-
-  for (key in resultObj) {
-    resultArr.push(resultObj[key])
-  }
-  return resultArr
+  return Object.values(map)
 };
 
