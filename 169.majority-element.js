@@ -6,18 +6,18 @@ var majorityElement = function(nums) {
   if (nums.length == 1) {
     return nums[0]
   }
-  var map = {}
-  var mid = Math.floor(nums.length / 2)
-  for (var i = 0; i < nums.length; i++) {
-    var c = nums[i]
-    if (map[c]) {
-      map[c]++
-      if (map[c] > mid) {
-        return c
-      }
+  var index = nums[0]
+  var count = 1
+  for (var i = 1; i < nums.length; i++) {
+    if (count == 0) {
+      index = nums[i]
+    }
+    if (index == nums[i]) {
+      count++
     } else {
-      map[c] = 1
+      count--
     }
   }
+  return index
 };
 
